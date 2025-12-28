@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Bearing Anomaly Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .upload-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .results {
+            display: none;
+            margin-top: 2rem;
+        }
+        .spinner-border {
+            display: none;
+        }
+        .status-card {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="upload-container bg-white">
+            <h2 class="text-center mb-4">NASA Bearing Anomaly Detection</h2>
+            
+            <div class="card status-card">
+                <div class="card-header">API Status</div>
+                <div class="card-body">
+                    <div id="apiStatus" class="d-flex align-items-center">
+                        <div class="spinner-border text-primary me-2" role="status"></div>
+                        <span>Checking API connection...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Upload Sensor Data</div>
+                <div class="card-body">
+                    <form id="uploadForm">
+                        <div class="mb-3">
+                            <label for="sensorFile" class="form-label">Select CSV/Excel file with sensor data</label>
+                            <input class="form-control" type="file" id="sensorFile" accept=".csv, .xlsx" required>
+                            <div class="form-text">File should contain time series data with sensor readings</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="spinner-border spinner-border-sm d-none" id="uploadSpinner"></span>
+                            Analyze Data
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="results" class="results">
+                <div class="card mt-4">
+                    <div class="card-header">Analysis Results</div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title" id="anomalyRate">0%</h5>
+                                        <p class="card-text text-muted">Anomaly Rate</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title" id="anomalyCount">0</h5>
+                                        <p class="card-text text-muted">Anomalies Detected</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title" id="totalSequences">0</h5>
+                                        <p class="card-text text-muted">Total Sequences</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="anomalyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check API status on page load
+        document.addEventListener('DOMContentLoaded', checkApiStatus);
+        
+        // Handle form submission
+        document.getElementById('uploadForm').addEventListener('submit', handleFileUpload);
+
+        let anomalyChart = null;
+
+        async function checkApiStatus() {
+            const statusElement = document.getElementById('apiStatus');
+            try {
+                const response = await fetch('/ping');
+                if (response.ok) {
+                    statusElement.innerHTML = '<span class="text-success">✓ API is online and ready</span>';
+                } else {
+                    throw new Error('API returned an error');
+                }
+            } catch (error) {
+                statusElement.innerHTML = `
+                    <span class="text-danger">✗ Could not connect to API. Make sure the server is running on http://localhost:5000</span>
+                    <div class="mt-2">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="checkApiStatus()">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        async function handleFileUpload(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('sensorFile');
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const uploadButton = document.querySelector('#uploadForm button[type="submit"]');
+            const spinner = document.getElementById('uploadSpinner');
+            
+            uploadButton.disabled = true;
+            spinner.classList.remove('d-none');
+
+            try {
+                // First upload the file to process it
+                const uploadResponse = await fetch('/process-file', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!uploadResponse.ok) {
+                    const error = await uploadResponse.json();
+                    throw new Error(error.error || 'Failed to process file');
+                }
+
+                const data = await uploadResponse.json();
+                
+                // Then send the processed data to the prediction endpoint
+                const predictResponse = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        sensor_data: data.data
+                    })
+                });
+
+                if (!predictResponse.ok) {
+                    const error = await predictResponse.json();
+                    throw new Error(error.error || 'Prediction failed');
+                }
+
+                const results = await predictResponse.json();
+                displayResults(results);
+                
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+                console.error('Error:', error);
+            } finally {
+                uploadButton.disabled = false;
+                spinner.classList.add('d-none');
+            }
+        }
+
+        function displayResults(results) {
+            // Update statistics
+            document.getElementById('anomalyRate').textContent = 
+                `${(results.predictions.anomaly_rate * 100).toFixed(2)}%`;
+            document.getElementById('anomalyCount').textContent = 
+                results.predictions.anomalies_detected;
+            document.getElementById('totalSequences').textContent = 
+                results.predictions.total_sequences;
+
+            // Prepare data for the chart
+            const labels = Array.from({length: results.predictions.total_sequences}, (_, i) => i + 1);
+            const anomalyIndices = new Set(results.predictions.anomaly_positions);
+            const anomalyData = labels.map((_, i) => 
+                anomalyIndices.has(i) ? results.statistics.threshold * 1.1 : null
+            );
+
+            // Create or update chart
+            const ctx = document.getElementById('anomalyChart').getContext('2d');
+            
+            if (anomalyChart) {
+                anomalyChart.destroy();
+            }
+
+            anomalyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Anomaly Threshold',
+                            data: Array(labels.length).fill(results.statistics.threshold),
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Anomaly Points',
+                            data: anomalyData,
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            showLine: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Reconstruction Error'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Sequence Number'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.datasetIndex === 1) {
+                                        return 'Anomaly Detected';
+                                    }
+                                    return `Threshold: ${results.statistics.threshold.toFixed(4)}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Show results section
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

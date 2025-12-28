@@ -1,0 +1,12 @@
+{
+    "sequence_length": 100,
+    "n_features": 51,
+    "threshold": 7.0869864515054575,
+    "accuracy": 0.9210034694422204,
+    "precision": 0.990909090909091,
+    "recall": 0.6927966101694916,
+    "f1_score": 0.8154613466334164,
+    "model_architecture": "LSTM Autoencoder",
+    "training_date": "2025-11-11 20:03:40",
+    "dataset": "NASA Bearing - 52 Sensors"
+}
