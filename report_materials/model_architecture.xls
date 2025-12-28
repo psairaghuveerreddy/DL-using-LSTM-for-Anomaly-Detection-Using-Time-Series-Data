@@ -1,0 +1,10 @@
+Component,Specification
+Model Type,LSTM Autoencoder
+Sequence Length,100 timesteps
+Number of Sensors,51 sensors
+Total Parameters,"291,011"
+Encoder Layers,LSTM(128) → LSTM(64) → LSTM(32)
+Decoder Layers,LSTM(32) → LSTM(64) → LSTM(128)
+Optimization,"Adam (lr=0.001, adaptive)"
+Loss Function,Mean Squared Error (MSE)
+Regularization,"Dropout(0.2), Recurrent Dropout(0.1)"

@@ -1,0 +1,5 @@
+Metric,Count,Description
+True Positives,1308,Correctly detected anomalies
+True Negatives,5594,Correctly detected normal
+False Positives,12,False alarms (Type I error)
+False Negatives,580,Missed anomalies (Type II error)
