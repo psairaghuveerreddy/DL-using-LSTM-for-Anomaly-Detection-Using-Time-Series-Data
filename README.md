@@ -5,10 +5,7 @@
 ---
 
 ## 📘 Overview
-This project focuses on detecting anomalies in **industrial bearing systems** using **Deep Learning**.
-
-A **Long Short-Term Memory (LSTM) Autoencoder** is trained on **NASA Bearing Prognostics Data** to learn normal time-series patterns and identify faults based on reconstruction errors.
-
+This project focuses on detecting anomalies in **industrial bearing systems** using **Deep Learning**.A **Long Short-Term Memory (LSTM) Autoencoder** is trained on **NASA Bearing Prognostics Data** to learn normal time-series patterns and identify faults based on reconstruction errors.
 The model is deployed as a **Flask REST API**, enabling **real-time anomaly detection** in sensor data streams.
 
 ---
@@ -160,7 +157,6 @@ Example Request:
 ---
 
  ## Visualizations
- 
   PCA-based anomaly clustering
   Confusion matrix visualization
   Time-series anomaly plots
@@ -180,7 +176,6 @@ Example Request:
 ---
 
  ## Report & Deliverables
-
 All generated files are saved in report_materials/ including:
 Performance metrics
 Confusion matrix
@@ -206,14 +201,12 @@ The system achieves 92%+ accuracy, is API-integrated, and supports real-time pre
 ---
 
  ## Acknowledgements
- 
- Dataset: NASA Prognostics Data Repository
+  Dataset: NASA Prognostics Data Repository
  Tools: TensorFlow, Flask, Scikit-learn, NumPy, Matplotlib
  Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
 
 ---
  ## Keywords
-
 LSTM Autoencoder 
 Anomaly Detection 
 Time-Series Data 
