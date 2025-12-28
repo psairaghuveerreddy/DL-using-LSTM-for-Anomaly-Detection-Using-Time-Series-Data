@@ -179,8 +179,8 @@ Example Request:
  ## Report & Deliverables
  
 All generated files are saved in report_materials/ including:
-  - Performance metrics
-  - Confusion matrix
+  * Performance metrics
+  * Confusion matrix
   * Model architecture summary
   * Training logs
   * Comprehensive project report
