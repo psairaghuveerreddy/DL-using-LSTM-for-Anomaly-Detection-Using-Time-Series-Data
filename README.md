@@ -160,11 +160,12 @@ Example Request:
 ---
 
  ## Visualizations
-- PCA-based anomaly clustering
-- Confusion matrix visualization
-- Time-series anomaly plots
-- Interactive 3D feature representation
-- Loss curve (training vs validation)
+ 
+  PCA-based anomaly clustering
+  Confusion matrix visualization
+  Time-series anomaly plots
+  Interactive 3D feature representation
+  Loss curve (training vs validation)
 
 ---
 
@@ -181,38 +182,43 @@ Example Request:
  ## Report & Deliverables
 
 All generated files are saved in report_materials/ including:
-- Performance metrics
-- Confusion matrix
-- Model architecture summary
-- Training logs
-- Comprehensive project report
+Performance metrics
+Confusion matrix
+Model architecture summary
+Training logs
+Comprehensive project report
 
 ---
+
  ## Conclusion
 This project demonstrates a complete pipeline for real-world anomaly detection using Deep Learning.
+
 The system achieves 92%+ accuracy, is API-integrated, and supports real-time predictions for industrial IoT use cases such as predictive maintenance and fault diagnosis.
 
 ---
+
  ## Author's
-- P. Sai Raghuveer Reddy
-- Department of Artificial Intelligence & Machine Learning
-- RNS Institute of Technology, Bengaluru
-- Year: 2025
+ P. Sai Raghuveer Reddy
+ Department of Artificial Intelligence & Machine Learning
+ RNS Institute of Technology, Bengaluru
+ Year: 2025
 
 ---
+
  ## Acknowledgements
-- Dataset: NASA Prognostics Data Repository
-- Tools: TensorFlow, Flask, Scikit-learn, NumPy, Matplotlib
-- Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
+ 
+ Dataset: NASA Prognostics Data Repository
+ Tools: TensorFlow, Flask, Scikit-learn, NumPy, Matplotlib
+ Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
 
 ---
  ## Keywords
 
-- LSTM Autoencoder 
-- Anomaly Detection 
-- Time-Series Data 
-- Predictive Maintenance 
-- Flask API 
-- Deep Learning
+LSTM Autoencoder 
+Anomaly Detection 
+Time-Series Data 
+Predictive Maintenance 
+Flask API 
+Deep Learning
 
 ---
