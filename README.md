@@ -89,7 +89,6 @@ Flask REST API for Real-Time Predictions
 | `/model_info` | GET | Displays model configuration details |
 | `/predict` | POST | Predicts anomalies for new sensor data |
 
-
 Example Request:
 ```json
 {
@@ -108,6 +107,7 @@ Example Request:
     "anomaly_rate": 0.1
   }
 }
+```
 
 
 📂 Deep Learning (LSTM Autoencoder) For Anomaly Detection Using Time-Series Data/
@@ -133,8 +133,8 @@ Example Request:
 ├── README.md                     # Project documentation (this file)
 └── requirements.txt              # Python dependencies
 
+##  Running Instructions
 
- Running Instructions
 1️ Install dependencies
 pip install tensorflow flask flask-cors joblib numpy pandas matplotlib scikit-learn plotly
 
@@ -184,7 +184,7 @@ The system achieves 92%+ accuracy, is API-integrated, and supports real-time pre
 P. Sai Raghuveer Reddy
 Department of Artificial Intelligence & Machine Learning
 RNS Institute of Technology, Bengaluru
- Year: 2025
+Year: 2025
 
  Acknowledgements
 
