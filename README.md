@@ -177,21 +177,21 @@ Example Request:
 ---
 
  ## Report & Deliverables
- ```
+ 
 All generated files are saved in report_materials/ including:
-  Performance metrics
-  Confusion matrix
-  Model architecture summary
-  Training logs
-  Comprehensive project report
-```
+  - Performance metrics
+  - Confusion matrix
+  * Model architecture summary
+  * Training logs
+  * Comprehensive project report
+
 ---
 
  ## Conclusion
- ```
+ 
 This project demonstrates a complete pipeline for real-world anomaly detection using Deep Learning.
 The system achieves 92%+ accuracy, is API-integrated, and supports real-time predictions for industrial IoT use cases such as predictive maintenance and fault diagnosis.
-```
+
 ---
 
  ## Author's
@@ -210,8 +210,8 @@ The system achieves 92%+ accuracy, is API-integrated, and supports real-time pre
  - Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
 ```
 ---
- Keywords
- 
+ ## Keywords
+ ```
 LSTM Autoencoder 
 Anomaly Detection 
 Time-Series Data 
