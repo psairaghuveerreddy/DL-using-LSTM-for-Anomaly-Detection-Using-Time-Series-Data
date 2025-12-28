@@ -139,78 +139,70 @@ Example Request:
 ```
 
 ---
+
 ##  Running Instructions
-
-1️ Install dependencies
-pip install tensorflow flask flask-cors joblib numpy pandas matplotlib scikit-learn plotly
-
-2️ Run Jupyter Notebook
-Train model and generate results using: jupyter notebook project_notebook.ipynb
-
-️3 Start Flask APIpython app.py
-
-4️ Test API Endpoints Use Python or Postman:
-import requests
-print(requests.get("http://127.0.0.1:5000/ping").json())
+1. **Install dependencies:** pip install tensorflow flask flask-cors joblib numpy pandas matplotlib scikit-learn plotly  
+2. **Run Jupyter Notebook:** Train model and generate results using: jupyter notebook project_notebook.ipyn
+3. **Start Flask API:** python app.py
+4. **Test API Endpoints Use Python or Postman:** import requests
+   print(requests.get("http://127.0.0.1:5000/ping").json())
 
 ---
 
- Visualizations
+ ## Visualizations
+- PCA-based anomaly clustering
+- Confusion matrix visualization
+- Time-series anomaly plots
+- Interactive 3D feature representation
+- Loss curve (training vs validation)
 
-✔ PCA-based anomaly clustering
-✔ Confusion matrix visualization
-✔ Time-series anomaly plots
-✔ Interactive 3D feature representation
-✔ Loss curve (training vs validation)
+---
+
+ ## Key Features
+
+- Real-time anomaly detection from sensor data
+- End-to-end workflow: preprocessing → model → API
+- High accuracy and robust thresholding
+- Scalable architecture for future datasets
+- Ready for industrial deployment
 
 ---
 
- Key Features
-
-Real-time anomaly detection from sensor data
-End-to-end workflow: preprocessing → model → API
-High accuracy and robust thresholding
-Scalable architecture for future datasets
-Ready for industrial deployment
-
----
- Report & Deliverables
+ ## Report & Deliverables
 
 All generated files are saved in report_materials/ including:
-Performance metrics
-Confusion matrix
-Model architecture summary
-Training logs
-Comprehensive project report
+- Performance metrics
+- Confusion matrix
+- Model architecture summary
+- Training logs
+- Comprehensive project report
 
 ---
- Conclusion
-
+ ## Conclusion
 This project demonstrates a complete pipeline for real-world anomaly detection using Deep Learning.
 The system achieves 92%+ accuracy, is API-integrated, and supports real-time predictions for industrial IoT use cases such as predictive maintenance and fault diagnosis.
 
 ---
- Author's
-
-P. Sai Raghuveer Reddy
-Department of Artificial Intelligence & Machine Learning
-RNS Institute of Technology, Bengaluru
-Year: 2025
-
----
- Acknowledgements
-
-Dataset: NASA Prognostics Data Repository
-Tools: TensorFlow, Flask, Scikit-learn, NumPy, Matplotlib
-Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
+ ## Author's
+- P. Sai Raghuveer Reddy
+- Department of Artificial Intelligence & Machine Learning
+- RNS Institute of Technology, Bengaluru
+- Year: 2025
 
 ---
- Keywords
+ ## Acknowledgements
+- Dataset: NASA Prognostics Data Repository
+- Tools: TensorFlow, Flask, Scikit-learn, NumPy, Matplotlib
+- Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
 
-. LSTM Autoencoder 
-· Anomaly Detection 
-· Time-Series Data 
-· Predictive Maintenance 
-· Flask API 
-· Deep Learning
-```
+---
+ ## Keywords
+
+- LSTM Autoencoder 
+- Anomaly Detection 
+- Time-Series Data 
+- Predictive Maintenance 
+- Flask API 
+- Deep Learning
+
+---
