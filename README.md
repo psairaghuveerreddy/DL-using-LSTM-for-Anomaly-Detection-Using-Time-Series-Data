@@ -190,7 +190,7 @@ RNS Institute of Technology, Bengaluru
 
 Dataset: NASA Prognostics Data Repository
 Tools: TensorFlow, Flask, Scikit-learn, NumPy, Matplotlib
-Guidance: Faculty, Department of AIML, RNSIT
+Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
 
  Keywords
 
