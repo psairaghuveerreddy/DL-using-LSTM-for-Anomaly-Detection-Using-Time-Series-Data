@@ -1,6 +1,5 @@
-# DL-using-LSTM-for-Anomaly-Detection-Using-Time-Series-Data
-
 # 🧠 Deep Learning (LSTM Autoencoder) for Anomaly Detection using Time-Series Data  
+
 ### 🚀 NASA Bearing Dataset | Predictive Maintenance Project  
 
 ---
