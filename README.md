@@ -109,7 +109,7 @@ Example Request:
 }
 ```
 
-
+```
 📂 Deep Learning (LSTM Autoencoder) For Anomaly Detection Using Time-Series Data/
 │
 ├── app.py                        # Flask API for model deployment
@@ -132,6 +132,7 @@ Example Request:
 ├── results_dashboard1.png
 ├── README.md                     # Project documentation (this file)
 └── requirements.txt              # Python dependencies
+```
 
 ##  Running Instructions
 
