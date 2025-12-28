@@ -5,7 +5,8 @@
 ---
 
 ## 📘 Overview
-This project focuses on detecting anomalies in **industrial bearing systems** using **Deep Learning**.  
+This project focuses on detecting anomalies in **industrial bearing systems** using **Deep Learning**.
+
 A **Long Short-Term Memory (LSTM) Autoencoder** is trained on **NASA Bearing Prognostics Data** to learn normal time-series patterns and identify faults based on reconstruction errors.
 
 The model is deployed as a **Flask REST API**, enabling **real-time anomaly detection** in sensor data streams.
@@ -31,11 +32,21 @@ The model is deployed as a **Flask REST API**, enabling **real-time anomaly dete
 
 ## ⚙️ System Workflow
 
-NASA Dataset → Data Preprocessing & Normalization → LSTM Autoencoder Training
-↓
-Reconstruction Error Calculation → Threshold Estimation → Anomaly Detection
-↓
-Flask REST API for Real-Time Predictions
+```
+        NASA Dataset 
+           ↓
+    Data Preprocessing & Normalization
+           ↓
+    LSTM Autoencoder Training
+           ↓
+    Reconstruction Error Calculation 
+           ↓
+    Threshold Estimation 
+           ↓
+      Anomaly Detection
+           ↓
+    Flask REST API for Real-Time Predictions
+```
 
 ---
 
