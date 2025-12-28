@@ -210,8 +210,8 @@ The system achieves 92%+ accuracy, is API-integrated, and supports real-time pre
  - Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
 ```
 ---
- ## Keywords
- ```
+ Keywords
+ 
 LSTM Autoencoder 
 Anomaly Detection 
 Time-Series Data 
