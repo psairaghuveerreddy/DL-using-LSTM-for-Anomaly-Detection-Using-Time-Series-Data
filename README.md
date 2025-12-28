@@ -139,8 +139,6 @@ Example Request:
 ```
 
 ---
-
-```
 ##  Running Instructions
 
 1️ Install dependencies
@@ -154,10 +152,9 @@ Train model and generate results using: jupyter notebook project_notebook.ipynb
 4️ Test API Endpoints Use Python or Postman:
 import requests
 print(requests.get("http://127.0.0.1:5000/ping").json())
-```
+
 ---
 
-```
  Visualizations
 
 ✔ PCA-based anomaly clustering
@@ -165,11 +162,9 @@ print(requests.get("http://127.0.0.1:5000/ping").json())
 ✔ Time-series anomaly plots
 ✔ Interactive 3D feature representation
 ✔ Loss curve (training vs validation)
-```
 
 ---
 
-```
  Key Features
 
 Real-time anomaly detection from sensor data
@@ -177,10 +172,8 @@ End-to-end workflow: preprocessing → model → API
 High accuracy and robust thresholding
 Scalable architecture for future datasets
 Ready for industrial deployment
-```
----
 
-```
+---
  Report & Deliverables
 
 All generated files are saved in report_materials/ including:
@@ -189,33 +182,29 @@ Confusion matrix
 Model architecture summary
 Training logs
 Comprehensive project report
-```
+
 ---
-```
  Conclusion
 
 This project demonstrates a complete pipeline for real-world anomaly detection using Deep Learning.
 The system achieves 92%+ accuracy, is API-integrated, and supports real-time predictions for industrial IoT use cases such as predictive maintenance and fault diagnosis.
-```
+
 ---
-```
  Author's
 
 P. Sai Raghuveer Reddy
 Department of Artificial Intelligence & Machine Learning
 RNS Institute of Technology, Bengaluru
 Year: 2025
-```
+
 ---
-```
  Acknowledgements
 
 Dataset: NASA Prognostics Data Repository
 Tools: TensorFlow, Flask, Scikit-learn, NumPy, Matplotlib
 Guidance: Dr. Ramesh Babu H S , Principal & Professor, Department of CSE/CSE (DS), RNSIT
-```
+
 ---
-```
  Keywords
 
 . LSTM Autoencoder 
